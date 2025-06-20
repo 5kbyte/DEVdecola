@@ -12,15 +12,13 @@ DevDeCola é uma plataforma especializada em conectar desenvolvedores e empresas
 
 - **Seu perfil é seu currículo**: Adicione suas experiências, skills, projetos, certificados e defina seu nível de atuação. As empresas avaliam diretamente pela plataforma.
 
-- **Crescimento por méritos**: Ganhe visibilidade ao participar de projetos — especialmente pelo plano Software House, que simula um ambiente profissional real.
+- **Crescimento por méritos**: Ganhe visibilidade ao participar de projetos.
 
 - **Níveis de atuação**: Júnior, Pleno, Sênior, Back-end, Front-end, Full Stack, Designer e mais — você aparece com base nas suas habilidades e evolução.
 
 ## 🏢 Para Empresas
 
 **Filtros inteligentes**: Encontre profissionais por stack, nível, localização e disponibilidade.
-
-**Qualidade garantida**: Desenvolvedores ativos no plano Software House passam por simulações reais e avaliações contínuas.
 
 **Transparência nos custos**: Você só é cobrado após efetivar a contratação. Todo o processo é transparente, com valores apresentados desde o início.
 
