@@ -1,0 +1,25 @@
+{
+  "name": "devdecola",
+  "version": "1.0.0",
+  "description": "![img](https://img.shields.io/github/license/5kbyte/DEVdecola.svg)\r ![img](https://img.shields.io/github/release/5kbyte/DEVdecola.svg)\r ![img](https://img.shields.io/badge/Maintained%3F-yes-green.svg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5kbyte/DEVdecola.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/5kbyte/DEVdecola/issues"
+  },
+  "homepage": "https://github.com/5kbyte/DEVdecola#readme",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.1",
+    "commitlint": "^19.8.1",
+    "husky": "^9.1.7"
+  }
+}
