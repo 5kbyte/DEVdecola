@@ -1,26 +1,29 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateEmpresaDto } from './dto/create-empresa.dto';
-import { UpdateEmpresaDto } from './dto/update-empresa.dto';
 
 @Injectable()
 export class EmpresaService {
-  create(createEmpresaDto: CreateEmpresaDto) {
-    return 'This action adds a new empresa';
-  }
+  constructor(private readonly prisma: PrismaService){}
 
-  findAll() {
-    return `This action returns all empresa`;
-  }
+  async createEmpresa(createEmpresaDto: CreateEmpresaDto) {
+   const usuario = await this.prisma.usuario.findUnique({ where: {
+    usuario_id: createEmpresaDto.usuario_id
+   }})
 
-  findOne(id: number) {
-    return `This action returns a #${id} empresa`;
-  }
+   if(!usuario){
+    throw new BadRequestException('O usuário não existe');
+   } else {
+    const empresa = await this.prisma.empresa.findUnique({where: {
+    empresa_cnpj: createEmpresaDto.empresa_cnpj
+   }})
 
-  update(id: number, updateEmpresaDto: UpdateEmpresaDto) {
-    return `This action updates a #${id} empresa`;
-  }
+   if(empresa){
+     throw new BadRequestException('A empresa já existe');
+   } else {
+    const createdEmpresa = await this.prisma.empresa.create({ data: createEmpresaDto})
+    return createdEmpresa
+   }
+  }}
 
-  remove(id: number) {
-    return `This action removes a #${id} empresa`;
-  }
 }

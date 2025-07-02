@@ -7,7 +7,8 @@ import {
   MaxLength,
   MinLength,
   IsOptional,
-  IsInt
+  IsInt,
+  IsBoolean
 } from 'class-validator';
 export class CreateUsuarioDto {
   @IsString({ message: 'Deve ser uma String' })
@@ -22,7 +23,7 @@ export class CreateUsuarioDto {
   @IsEmail(undefined, {message: "O E-mail deve ser válido"})
   usuario_email: string;
 
-  @IsNotEmpty({message: "E-mail é obrigatório"})
+  @IsNotEmpty({message: "Senha é obrigatório"})
   @IsString({ message: 'Deve ser uma String' })
   @MinLength(8, { message: 'Deve ter pelo menos 8 caracteres' })
   @MaxLength(32, { message: 'Deve ter menos de 32 caracteres' })
@@ -43,4 +44,9 @@ export class CreateUsuarioDto {
   @IsString({ message: 'Deve ser uma String' })
   @IsOptional()
   usuario_endereco: string;
+
+
+  @IsBoolean({message: "Deve ser um Boolean"})
+  @IsNotEmpty({message: "Tipo é Obrigatório"})
+  usuario_tipo: boolean
 }
