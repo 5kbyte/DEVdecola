@@ -1,26 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { JwtPayload } from './interfaces/InterfaceAuth';
+import { JwtService } from '@nestjs/jwt';
+
+import * as bcypt from "bcrypt"
 
 @Injectable()
 export class AuthService {
-  create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
-  }
-
-  findAll() {
-    return `This action returns all auth`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} auth`;
-  }
-
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} auth`;
+  constructor(private readonly prisma: PrismaService, private readonly jwtService: JwtService,) {}
+  async login(createAuthDto: CreateAuthDto) {
+    const user = await this.prisma.usuario.findUnique({
+      where: { usuario_email: createAuthDto.usuario_email },
+    });
+    if (!user) {
+      throw new BadRequestException('Usuario não existe');
+    }
+    const comparePassword = await bcypt.compare(createAuthDto.usuario_senha, user.usuario_senha)
+    if(!comparePassword){
+      throw new BadRequestException('E-mail ou Senha Invalidos');
+    }
+    const payload: JwtPayload = {
+      userId: user.usuario_id,
+      userEmail: createAuthDto.usuario_senha,
+    };
+     return {
+      access_token: this.jwtService.sign(payload),
+    }
   }
 }
