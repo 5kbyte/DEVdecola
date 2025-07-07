@@ -34,6 +34,21 @@ model empresa {
   usuario_id     Int      @unique
   usuario        usuario  @relation(fields: [usuario_id], references: [usuario_id])
   ano_fundacao   DateTime?
+  vagas        vaga[]
+}
+
+model vaga {
+  id_vaga          Int       @id @default(autoincrement())
+  empresa_cnpj     String
+  descricao        String
+  beneficios       String?   @db.Text 
+  modalidade       String?
+  data_fim         DateTime? @db.Date 
+  requisitos       String?   @db.Text 
+  link_contrato    String?
+  regime           String?
+  carga_horaria    String?
+  empresa          empresa   @relation(fields: [empresa_cnpj], references: [empresa_cnpj])
 }
 
 
