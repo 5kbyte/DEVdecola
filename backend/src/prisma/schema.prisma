@@ -30,9 +30,10 @@ model desenvolvedor {
 }
 
 model empresa {
-  empresa_cnpj String  @id
-  usuario_id   Int @unique
-  usuario      usuario @relation(fields: [usuario_id], references: [usuario_id])
+  empresa_cnpj   String   @id
+  usuario_id     Int      @unique
+  usuario        usuario  @relation(fields: [usuario_id], references: [usuario_id])
+  ano_fundacao   DateTime?
   vagas        vaga[]
 }
 
