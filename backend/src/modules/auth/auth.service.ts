@@ -4,7 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { JwtPayload } from './interfaces/InterfaceAuth';
 import { JwtService } from '@nestjs/jwt';
 
-import * as bcypt from "bcrypt"
+import * as bcypt from "bcrypt";
 
 @Injectable()
 export class AuthService {
@@ -22,10 +22,29 @@ export class AuthService {
     }
     const payload: JwtPayload = {
       userId: user.usuario_id,
-      userEmail: createAuthDto.usuario_senha,
+      userEmail: createAuthDto.usuario_email,
     };
      return {
       access_token: this.jwtService.sign(payload),
+    }
+  }
+
+
+  async googleLogin(user: any) {
+
+    const userExists = await this.prisma.usuario.findUnique({
+      where: {usuario_email: user.email},
+    });
+
+    if(!userExists) {
+      const createdUser = await this.prisma.usuario.create({
+        data: {
+          usuario_email: user.email,
+          usuario_nome: user.firstName,
+          //add depois o resto tipo o do avatar tlgd
+
+        }
+      })
     }
   }
 }
