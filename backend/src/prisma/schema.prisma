@@ -13,11 +13,11 @@ model usuario {
   usuario_nome     String
   usuario_sobre    String?   
   usuario_email    String    @unique
-  usuario_senha    String
+  usuario_senha    String?  //aqui deixei opcional pra dar certo login via Oauth, mas relaxa o dto dele ainda vai obrigar a usá-lo
   usuario_telefone String?   
   usuario_endereco String?   
   data_criacao     DateTime @default(now())
-
+  
   desenvolvedor desenvolvedor?
   empresa empresa? 
 }

@@ -12,3 +12,4 @@ export class CreateEmpresaDto {
   @IsOptional()
   ano_fundacao: string;
 }
+
