@@ -24,4 +24,13 @@ export class AuthController {
     return this.authService.googleLogin(req.user);
   }
 
+   @Get('microsoft')
+  @UseGuards(AuthGuard('microsoft'))
+  async microsoftAuth() {}
+
+  @Get('microsoft/callback')
+  @UseGuards(AuthGuard('microsoft'))
+  async microsoftAuthRedirect(@Req() req) {
+    return this.authService.microsoftLogin(req.user);
+  }
 }

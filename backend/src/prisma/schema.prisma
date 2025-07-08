@@ -17,7 +17,7 @@ model usuario {
   usuario_telefone String?   
   usuario_endereco String?   
   data_criacao     DateTime @default(now())
-
+  
   desenvolvedor desenvolvedor?
   empresa empresa? 
 }
