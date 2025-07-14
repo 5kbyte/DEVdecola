@@ -1,0 +1,143 @@
+.input__wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	width: 100%;
+}
+
+.label {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	cursor: pointer;
+}
+
+.label__text {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: #374151;
+}
+
+.input__container {
+	position: relative;
+	height: 48px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.input {
+	width: 100%;
+	height: 100%;
+	padding: 0 48px;
+	border-radius: 4px;
+	font-size: 1rem;
+	border: 1px solid #d1d5db;
+	box-sizing: border-box;
+	transition: border-color 0.2s ease;
+}
+
+.input:focus {
+	outline: none;
+	border-color: black;
+	color: black;
+}
+
+.input__error {
+	border-color: #ef4444;
+	color: #ef4444;
+}
+
+.input__warning {
+	border-color: #f59e0b;
+	color: #f59e0b;
+}
+
+.input__success {
+	border-color: #10b981;
+	color: #10b981;
+}
+
+.helper__text {
+	font-size: 1rem;
+	margin-top: 8px;
+	color: #6b7280;
+}
+
+.helper__text__error {
+	color: #ef4444;
+}
+
+.helper__text__warning {
+	color: #f59e0b;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+	color: white;
+}
+
+/* ícone à esquerda */
+.icon__left {
+	position: absolute;
+	left: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 32px;
+	height: 32px;
+	background-color: #d1d5db;
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 2px;
+	pointer-events: none;
+	transition: background-color 0.2s ease;
+}
+
+/* Quando o container recebe foco, o ícone fica preto */
+.input__container:focus-within .icon__left {
+	background-color: black;
+}
+
+.icon__left__error {
+	background-color: #ef4444;
+}
+
+.icon__left__warning {
+	background-color: #f59e0b;
+}
+
+/* ícone de olho à direita */
+.icon__right {
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 32px;
+	height: 32px;
+	background-color: transparent;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	outline: none;
+}
+
+/* escondido até o foco */
+.eyeToggle {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.2s ease;
+}
+
+/* quando o container recebe foco */
+.input__container:focus-within .eyeToggle {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.input__container:focus-within .eyeToggle .icon {
+	color: black;
+}
